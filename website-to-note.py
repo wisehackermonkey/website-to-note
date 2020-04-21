@@ -7,7 +7,7 @@
 import requests
 import pyperclip
 import validators
-
+# script for getting the date in format yyyymmdd for easy use
 from dateformate import current_date
 
 # scrape url for title
@@ -50,4 +50,5 @@ def main():
 
 if __name__ == "__main__":
     print("website-to-note by oran collins 20200420")
+    # start of the program
     main()
