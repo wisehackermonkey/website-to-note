@@ -7,18 +7,26 @@
 import requests
 import pyperclip
 import validators
-from newsplease import NewsPlease
 
 from dateformate import current_date
 
 # scrape url for title
+# credit goes to this stackoverflow post
+# https://stackoverflow.com/questions/51233/how-can-i-retrieve-the-page-title-of-a-webpage-using-python
 def get_website_title(url):
-    title = ""
-    response = NewsPlease.from_url(url)
-    title = response.title
+    if not url:
+        print("no url givin")
+        return -1
+    hearders = {'headers':'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:51.0) Gecko/20100101 Firefox/51.0'}
+    
+    n = requests.get(url, headers=hearders) 
+    al = n.text; 
+     
+    title = al[al.find('<title>') + 7 : al.find('</title>')]
     return title
 
 def main():
+    # grab the contents of the clipboard
     clipboard_url = pyperclip.paste()
 
 
@@ -27,13 +35,16 @@ def main():
     if not validators.url(clipboard_url):
         print("Clipboard Does not contain a URL")
         return -1
-   
+
+    # format the title, url, and date for the website in a string
     result = f"""
 {get_website_title(clipboard_url)}
 {clipboard_url}
 {current_date()}
 """
     print(result)
+
+    #copy result back into clipboard
     pyperclip.copy(result)
 
 

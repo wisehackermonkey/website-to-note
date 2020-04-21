@@ -21,19 +21,12 @@ pip install -r requirements.txt
 ## build exe for windows
 ```
 pip install pyinstaller
-pyinstaller --noconsole --specpath ${PWD}/builds --distpath ${PWD}/builds/dist --workpath ${PWD}/builds/build --onefile website-to-note.py
+pyinstaller --noconsole --specpath ${PWD}/build --distpath ${PWD}/build/dist --workpath ${PWD}/build/build --onefile website-to-note.py
 ```
 
 ## advance (powershell) build exe for windows (auto zip for releases)
 ```
-pyinstaller --noconsole --specpath ${PWD}/builds --distpath ${PWD}/builds/dist --workpath ${PWD}/builds/build --onefile website-to-note.py; 
-
-
-mv -force ${PWD}/builds/dist/website-to-note.exe ${PWD}/windows_builds/website-to-note.exe ; 
-
-$date = Get-Date -Format "yyyyMMdd"; 
-
-Compress-Archive -force -Path ${PWD}/windows_builds/website-to-note.exe -DestinationPath ${PWD}/windows_builds/website-to-note_windows_${date}.zip
+pyinstaller --noconsole --specpath ${PWD}/build --distpath ${PWD}/windows_builds --workpath ${PWD}/build/build --onefile website-to-note.py; $date = Get-Date -Format "yyyyMMdd"; Compress-Archive -force -Path ${PWD}/windows_builds/website-to-note.exe -DestinationPath ${PWD}/windows_builds/website-to-note_windows_${date}.zip
 ```
 
 ## todo
