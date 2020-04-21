@@ -4,28 +4,37 @@
 # github.com/wisehackermonkey
 # oranbusiness@gmail.com
 # 20200420
-
+import requests
 import pyperclip
 import validators
 from newsplease import NewsPlease
 
 from dateformate import current_date
 
+# scrape url for title
+def get_website_title(url):
+    title = ""
+    response = NewsPlease.from_url(url)
+    title = response.title
+    return title
+
 def main():
-    clipboard = pyperclip.paste()
+    clipboard_url = pyperclip.paste()
 
 
     #check if the clipboard has a url 
 
-    if not validators.url(clipboard):
+    if not validators.url(clipboard_url):
         print("Clipboard Does not contain a URL")
         return -1
-
-    # scrape url for title
-    article = NewsPlease.from_url(clipboard)
-    
-    result = f"""{article.title}{current_date()}{clipboard}"""
+   
+    result = f"""
+{get_website_title(clipboard_url)}
+{clipboard_url}
+{current_date()}
+"""
     print(result)
+    pyperclip.copy(result)
 
 
 if __name__ == "__main__":
