@@ -39,3 +39,14 @@ pyinstaller --noconsole --specpath ${PWD}/build --distpath ${PWD}/windows_builds
 validators - validators 0.11.2 documentation
 https://validators.readthedocs.io/en/latest/#
 20200420
+
+
+Python - How to validate a url in python ? (Malformed or not) - Stack Overflow
+https://stackoverflow.com/questions/7160737/python-how-to-validate-a-url-in-python-malformed-or-not
+20200420
+
+
+html - How can I retrieve the page title of a webpage using Python? - Stack Overflow
+https://stackoverflow.com/questions/51233/how-can-i-retrieve-the-page-title-of-a-webpage-using-python
+20200420
+
